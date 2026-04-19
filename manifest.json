@@ -1,0 +1,16 @@
+{
+    "name": "岩城星选",
+    "short_name": "岩城星选",
+    "description": "精选岩城特产，优质好物创意生活",
+    "start_url": "./index.html",
+    "display": "standalone",
+    "background_color": "#FFFAF5",
+    "theme_color": "#8B4513",
+    "icons": [
+        {
+            "src": "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎁</text></svg>",
+            "sizes": "any",
+            "type": "image/svg+xml"
+        }
+    ]
+}
