@@ -340,6 +340,142 @@
             transition-duration: 0.1s;
         }
 
+        .share-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 36px;
+            height: 36px;
+            background: rgba(139,69,19,0.85);
+            backdrop-filter: blur(4px);
+            border: none;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            cursor: pointer;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.25s, transform 0.25s;
+            box-shadow: 0 2px 8px rgba(139,69,19,0.25);
+        }
+        .share-btn:hover {
+            background: #8B4513;
+            transform: scale(1.15) rotate(15deg);
+        }
+        .share-btn:active { transform: scale(0.95); }
+
+        /* Share Modal */
+        #shareModal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 9998;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        #shareModal.show { display: flex; animation: modalSlideUp 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+        .share-panel {
+            background: white;
+            border-radius: 20px 20px 0 0;
+            max-width: 500px;
+            width: 100%;
+            padding: 1.5rem;
+            animation: modalContentUp 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .share-panel-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+        .share-panel-header h3 { color: var(--primary); font-size: 1.2rem; }
+        .share-panel-header .close-btn {
+            background: var(--bg-cream);
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .share-panel-header .close-btn:hover { transform: rotate(90deg); }
+        .share-product-info {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: var(--bg-cream);
+            border-radius: 12px;
+            padding: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+        .share-product-emoji { font-size: 2.5rem; }
+        .share-product-detail h4 { color: var(--text-dark); font-size: 0.95rem; margin-bottom: 0.2rem; }
+        .share-product-detail .price { color: var(--primary); font-weight: 700; }
+        .share-platforms {
+            display: flex;
+            justify-content: space-around;
+            gap: 0.8rem;
+            margin-bottom: 1.2rem;
+        }
+        .share-platform {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.4rem;
+            cursor: pointer;
+            flex: 1;
+        }
+        .share-platform-icon {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+        .share-platform:hover .share-platform-icon {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+        }
+        .share-platform-label { font-size: 0.75rem; color: var(--text-medium); }
+        .share-link-row {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+        .share-link-input {
+            flex: 1;
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            font-size: 0.85rem;
+            background: var(--bg-cream);
+            color: var(--text-dark);
+            cursor: text;
+        }
+        .copy-link-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            border: none;
+            padding: 0.7rem 1.2rem;
+            border-radius: 10px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .copy-link-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 12px rgba(139,69,19,0.3); }
+        @media (max-width: 480px) {
+            .share-platform-icon { width: 48px; height: 48px; font-size: 1.4rem; }
+            .share-platform-label { font-size: 0.7rem; }
+        }
+
         .product-card .emoji {
             font-size: 3rem;
             margin-bottom: 0.5rem;
@@ -1331,6 +1467,45 @@
         </div>
     </footer>
 
+    <!-- 分享模态框 -->
+    <div id="shareModal" role="dialog" aria-label="分享">
+        <div class="share-panel">
+            <div class="share-panel-header">
+                <h3>✨ 分享商品</h3>
+                <button class="close-btn" onclick="closeShareModal()" aria-label="关闭">×</button>
+            </div>
+            <div class="share-product-info">
+                <span class="share-product-emoji" id="shareProductEmoji">🍄</span>
+                <div class="share-product-detail">
+                    <h4 id="shareProductName">野生红菇</h4>
+                    <div class="price" id="shareProductPrice">¥168</div>
+                </div>
+            </div>
+            <div class="share-platforms">
+                <div class="share-platform" onclick="shareTo('wechat')" title="微信">
+                    <div class="share-platform-icon" style="background:#07C160;color:white">💚</div>
+                    <span class="share-platform-label">微信</span>
+                </div>
+                <div class="share-platform" onclick="shareTo('moments')" title="朋友圈">
+                    <div class="share-platform-icon" style="background:#4CAF50;color:white">🧭</div>
+                    <span class="share-platform-label">朋友圈</span>
+                </div>
+                <div class="share-platform" onclick="shareTo('qq')" title="QQ">
+                    <div class="share-platform-icon" style="background:#12B7F5;color:white">💬</div>
+                    <span class="share-platform-label">QQ</span>
+                </div>
+                <div class="share-platform" onclick="shareTo('weibo')" title="微博">
+                    <div class="share-platform-icon" style="background:#E6162D;color:white">📰</div>
+                    <span class="share-platform-label">微博</span>
+                </div>
+            </div>
+            <div class="share-link-row">
+                <input class="share-link-input" id="shareLinkInput" type="text" readonly onclick="this.select()" aria-label="分享链接">
+                <button class="copy-link-btn" onclick="shareTo('copyLink')">复制链接</button>
+            </div>
+        </div>
+    </div>
+
     <!-- 提示消息 -->
     <div class="toast" id="toast"></div>
 
@@ -1513,6 +1688,7 @@ function renderAllProducts() {
         function createProductCard(product) {
             return `
                 <div class="product-card" onclick="showProductDetail(${product.id})">
+                    <button class="share-btn" onclick="event.stopPropagation(); openShareModal(${product.id})" title="分享">↗</button>
                     <div class="product-image">
                         <span class="product-tag">热销</span>
                         ${product.emoji}
@@ -1533,7 +1709,45 @@ function renderAllProducts() {
             `;
         }
 
-        // 页面切换
+        // 分享功能
+        let shareTargetProduct = null;
+        function openShareModal(productId) {
+            shareTargetProduct = products.find(p => p.id === productId);
+            if (!shareTargetProduct) return;
+            document.getElementById('shareProductEmoji').textContent = shareTargetProduct.emoji;
+            document.getElementById('shareProductName').textContent = shareTargetProduct.name;
+            document.getElementById('shareProductPrice').textContent = '¥' + shareTargetProduct.price;
+            document.getElementById('shareLinkInput').value = window.location.href + '?from=' + productId;
+            document.getElementById('shareModal').classList.add('show');
+        }
+        function closeShareModal() {
+            document.getElementById('shareModal').classList.remove('show');
+            shareTargetProduct = null;
+        }
+        function shareTo(platform) {
+            if (!shareTargetProduct) return;
+            const title = shareTargetProduct.name + ' - 岩城星选精选好礼';
+            const text = '我发现了一个好商品：' + shareTargetProduct.name + '，只需¥' + shareTargetProduct.price + '，源自岩城的天然特产，品质保证！';
+            const url = window.location.href;
+            const shareUrls = {
+                wechat: 'javascript:;',
+                moments: 'javascript:;',
+                qq: 'http://connect.qq.com/widget/shareqq/index.html?url=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(title) + '&desc=' + encodeURIComponent(text),
+                weibo: 'http://service.weibo.com/share/share.php?url=' + encodeURIComponent(url) + '&title=' + encodeURIComponent(text)
+            };
+            if (platform === 'copyLink') {
+                navigator.clipboard.writeText(document.getElementById('shareLinkInput').value).then(function() {
+                    showToast('链接已复制，请粘贴分享');
+                }).catch(function() {
+                    document.getElementById('shareLinkInput').select();
+                    document.execCommand('copy');
+                    showToast('链接已复制，请粘贴分享');
+                });
+            } else {
+                window.open(shareUrls[platform], '_blank', 'width=600,height=500');
+            }
+            closeShareModal();
+        }
         // 移动端菜单切换
         function toggleMobileMenu() {
             const menu = document.getElementById('mobileMenu');
