@@ -1,0 +1,13 @@
+# Organic Systems
+
+## Design Philosophy
+
+Information thrives in natural clustering — nodes of meaning that branch, connect, and bloom like neural pathways or mycelium networks. Each cluster carries its own chromatic identity, yet all belong to a single living organism. The mind map is not a diagram; it is a cultivated garden of thought, where ideas take root and spread through organic spatial logic. Every branch is meticulously tended, every node placed with the precision of a master gardener who has spent countless seasons understanding how knowledge grows.
+
+Color serves as the primary identifier of conceptual territory — warm terracotta for commerce, deep forest green for operations, ocean blue for data, amber gold for strategy, and slate violet for technology. These chromatic zones create instinctive navigation; the eye knows where it lands before the mind processes the word. The palette draws from earth and architecture, from soil under fingernails and the geometric bones of well-built structures. Painstaking chromatic calibration ensures each hue sings in precise harmony with its neighbors.
+
+Form follows the logic of growth — central concepts radiate outward through curved, organic pathways that suggest natural expansion rather than rigid hierarchy. Nodes are rounded, breathing forms, never sharp or authoritarian. The central trunk anchors the composition with visual weight, while peripheral branches lighten and thin, creating natural perspective and depth. Typography exists as delicate labels floating within these organic containers — never commanding, always serving the spatial narrative. This is the product of deep expertise in visual hierarchy.
+
+Scale communicates importance with master-level execution: the central node commands the largest territory, primary branches occupy substantial space, and leaf nodes compress into elegant, information-dense clusters. Breathing room between clusters prevents cognitive overload while maintaining the sense of an interconnected whole. The composition rewards both distant scanning and close reading, like a landscape that reveals wildflowers only upon approach. Every millimeter of spacing reflects painstaking attention to the viewer's cognitive journey.
+
+The final artifact must feel as though a cartographer of ideas labored over it for weeks — each curve calibrated, each color relationship tested, each spatial interval measured against the golden ratio. This is not decoration applied to information; this is information expressed through masterful spatial orchestration. The result should feel inevitable, as if this particular arrangement of ideas could exist no other way.

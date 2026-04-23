@@ -1,10 +1,9 @@
-# 岩城星选
-
-精选好物，创意生活 🎁
+﻿# 岩城星选
+精选好物，创意生活
 
 ## 访问地址
 
-https://yancheng-shop.github.io/yancheng-shop/
+https://qq1085861618-ctrl.github.io/yancheng-shop/
 
 ## 功能
 
@@ -12,8 +11,12 @@ https://yancheng-shop.github.io/yancheng-shop/
 - 搜索与分类筛选
 - 商品详情弹窗
 - 礼盒定制
-- 音乐创作工作台
+- 音乐创作工作坊
 - 灵感记录
 - 订单管理
 - 个人中心
-- 微信收款码
+- 微信支付
+
+## 技术栈
+
+Vue.js | 单页应用 | GitHub Pages
