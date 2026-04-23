@@ -1,0 +1,16 @@
+﻿# 临时文件
+*.bak
+*.tmp
+*.log
+
+# 开发脚本
+find_cjk_font.py
+generate_mindmap.py
+
+# 临时图片
+extracted-img-*.jpg
+inline-img-*.jpg
+
+# 缓存
+.DS_Store
+Thumbs.db
